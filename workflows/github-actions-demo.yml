@@ -1,9 +1,5 @@
-name: Build and Push Docker Compose
-on:
-  push:
-    branches:
-      - main
-
+name: GitHub Actions Demo
+on: [push]
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
