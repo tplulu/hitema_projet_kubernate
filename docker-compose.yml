@@ -1,6 +1,9 @@
 version: '3'
 
 services:
+  webapp:
+    build: .
+    image: tplulu/projet_kub:latest
   flask-app:
     environment:
       FLASK_ENV: development
