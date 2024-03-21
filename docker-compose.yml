@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  flask-app:
+    environment:
+      FLASK_ENV: development
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mysql-db
+    networks:
+      - mon-reseau
+
+  mysql-db:
+    image: mysql:latest
+    container_name: zen_shtern
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: test
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./mysql-init:/docker-entrypoint-initdb.d
+    networks:
+      - mon-reseau
+
+networks:
+  mon-reseau:
+    driver: bridge
+
+volumes:
+  mysql-data:
