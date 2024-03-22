@@ -4,24 +4,12 @@ from flask_mysqldb import MySQL
 app = Flask(__name__)
 
 # Configuration de la base de données MySQL
-app.config['MYSQL_HOST'] = '10.0.148.182'  # Nom du conteneur MySQL
+app.config['MYSQL_HOST'] = '10.0.221.219'  # Nom du conteneur MySQL
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = 'password'     # Mot de passe défini lors de la création du conteneur MySQL
 app.config['MYSQL_DB'] = 'test'      # Nom de la base de données
 
-#mysql = MySQL(app)
-
-# Fonction pour exécuter les commandes SQL de création de la base de données et de la table
-def create_database_and_table():
-    cur = mysql.connection.cursor()
-    cur.execute("CREATE DATABASE IF NOT EXISTS test;")
-    cur.execute("USE test;")
-    cur.execute("CREATE TABLE IF NOT EXISTS user (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255) NOT NULL);")
-    mysql.connection.commit()
-    cur.close()
-
-# Exécution de la fonction lors du démarrage de l'application
-#create_database_and_table()
+mysql = MySQL(app)
 
 # Route POST pour ajouter un utilisateur
 @app.route("/add_user", methods=['POST'])
@@ -42,8 +30,6 @@ def add_user():
 # Route pour afficher les données de la table "user"
 @app.route("/")
 def display_users():
-  
-    return "<h1>Utilisateurs</h1>" 
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM user")
     users = cur.fetchall()
