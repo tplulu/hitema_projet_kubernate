@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: mon-replicaset
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: thibault_flask
+  template:
+    metadata:
+      labels:
+        app: thibault_flask
+    spec:
+      containers:
+      - name: thibault_flask
+        image: tplulu/projet_kub:latest
+        ports:
+        - containerPort: 5000
+

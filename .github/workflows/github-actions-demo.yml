@@ -20,3 +20,16 @@ jobs:
         run: |
           docker-compose build
           docker-compose push
+
+      - name: Azure Login
+        run: |
+          az login --username ${{ secrets.AZUR_EMAIL }} --password ${{ secrets.AZUR_PASSWORD }}
+
+      - name: Deploy to Kubernetes
+        run: |
+          kubectl apply -f chemin/vers/votre/fichier/de/configuration.yaml
+          
+      - name: Deploy to Kubernetes
+        run: |
+          kubectl apply -f thibault_service_replicat.yaml
+          kubectl apply -f thibault_deployment.yaml
