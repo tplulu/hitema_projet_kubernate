@@ -39,8 +39,22 @@ spec:
         image: mysql:latest
         ports:
         - containerPort: 3306  # Port utilisé par MySQL
+        volumeMounts:
+          - name: mysql-initdb
+            mountPath: /docker-entrypoint-initdb.d
         env:
         - name: MYSQL_ROOT_PASSWORD
           value: password  # Remplacez par le mot de passe souhaité
         - name: MYSQL_DATABASE
           value: test  # Nom de la base de données par défaut
+      volumes:
+      - name: mysql-initdb
+        configMap:
+          name: mysql-initdb-config
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-initdb-config
+data:
+  initdb.sql: |
+    CREATE TABLE TABLE IF NOT EXISTS user (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255) NOT NULL);
