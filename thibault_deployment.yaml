@@ -39,6 +39,9 @@ spec:
         image: mysql:latest
         ports:
         - containerPort: 3306  # Port utilisé par MySQL
+        volumeMounts:
+          - name: mysql-init
+            mountPath: /docker-entrypoint-initdb.d
         env:
         - name: MYSQL_ROOT_PASSWORD
           value: password  # Remplacez par le mot de passe souhaité
