@@ -50,7 +50,7 @@ spec:
       initContainers:
         - name: init-mysql
           image: mysql:latest
-          command: ['sh', '-c', 'mysql -h localhost -u root -ppassword < /docker-entrypoint-initdb.d/init.sql']
+          command: ['sh', '-c', 'mysql -h localhost -u root -p password < /docker-entrypoint-initdb.d/init.sql']
           volumeMounts:
             - name: mysql-init
               mountPath: /docker-entrypoint-initdb.d
