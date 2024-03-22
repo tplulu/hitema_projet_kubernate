@@ -27,5 +27,5 @@ jobs:
 
       - name: Deploy to Kubernetes
         run: |
-          kubectl apply -f thibault_service_replicat.yaml
-          kubectl apply -f thibault_deployment.yaml
+          kubectl apply -f thibault_service_replicat.yaml --validate=false
+          kubectl apply -f thibault_deployment.yaml --validate=false
