@@ -7,4 +7,4 @@ spec:
     - protocol: TCP
       port: 3306  # Port utilisé par MySQL
   selector:
-    app: mysql-db  # Étiquette du pod de votre base de données MySQL
+    app: zen_shtern # Étiquette du pod de votre base de données MySQL
