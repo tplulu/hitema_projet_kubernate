@@ -29,6 +29,7 @@ jobs:
 
       - name: Deploy to Kubernetes
         run: |
+          kubectl delete deployment thibault-flask-deployment
           kubectl apply -f thibault_deployment.yaml --validate=false
           kubectl apply -f thibault_service_bdd.yaml --validate=false
           kubectl apply -f thibault_service_loadbalancer.yaml --validate=false
