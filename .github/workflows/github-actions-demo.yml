@@ -31,3 +31,4 @@ jobs:
         run: |
           kubectl apply -f thibault_service_replicat.yaml --validate=false
           kubectl apply -f thibault_deployment.yaml --validate=false
+          kubectl apply -f thibault_service_bdd.yaml --validate=false
