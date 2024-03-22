@@ -1,7 +1,9 @@
 apiVersion: apps/v1
-kind: ReplicaSet
+kind: Deployment
 metadata:
-  name: thibault-mon-replicaset
+  name: thibault-flask-deployment
+  labels:
+    app: thibault-flask
 spec:
   replicas: 3
   selector:

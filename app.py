@@ -9,7 +9,7 @@ app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = 'password'     # Mot de passe défini lors de la création du conteneur MySQL
 app.config['MYSQL_DB'] = 'test'      # Nom de la base de données
 
-mysql = MySQL(app)
+#mysql = MySQL(app)
 
 # Fonction pour exécuter les commandes SQL de création de la base de données et de la table
 def create_database_and_table():
@@ -21,7 +21,7 @@ def create_database_and_table():
     cur.close()
 
 # Exécution de la fonction lors du démarrage de l'application
-create_database_and_table()
+#create_database_and_table()
 
 # Route POST pour ajouter un utilisateur
 @app.route("/add_user", methods=['POST'])
@@ -42,6 +42,8 @@ def add_user():
 # Route pour afficher les données de la table "user"
 @app.route("/")
 def display_users():
+  
+    return "<h1>Utilisateurs</h1>" 
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM user")
     users = cur.fetchall()
