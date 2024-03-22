@@ -21,10 +21,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mysql-db-service  # Nom du service pour la base de données MySQL
+  name: thibault-mysql-db-service # Nom du service pour la base de données MySQL
 spec:
   selector:
-    app: zen_shtern # Correspond au label utilisé par le conteneur de la base de données MySQL
+    app: thibault-mysql-db-service # Correspond au label utilisé par le conteneur de la base de données MySQL
   ports:
     - protocol: TCP
       port: 3306  # Port utilisé par MySQL
