@@ -13,7 +13,19 @@ spec:
         app: thibault_flask
     spec:
       containers:
-      - name: thibault-flask-container  # Modification du nom du conteneur
+      - name: thibault-flask-container
         image: tplulu/projet_kub:latest
         ports:
         - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-db-service  # Nom du service pour la base de données MySQL
+spec:
+  selector:
+    app: mysql-db  # Correspond au label utilisé par le conteneur de la base de données MySQL
+  ports:
+    - protocol: TCP
+      port: 3306  # Port utilisé par MySQL
+      targetPort: 3306  # Port cible sur le conteneur de la base de données MySQL
