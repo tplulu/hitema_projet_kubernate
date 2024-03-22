@@ -13,8 +13,7 @@ spec:
         app: thibault_flask
     spec:
       containers:
-      - name: thibault_flask
+      - name: thibault-flask-container  # Modification du nom du conteneur
         image: tplulu/projet_kub:latest
         ports:
         - containerPort: 5000
-
