@@ -39,22 +39,8 @@ spec:
         image: mysql:latest
         ports:
         - containerPort: 3306  # Port utilisé par MySQL
-        volumeMounts:
-          - name: mysql-init
-            mountPath: /docker-entrypoint-initdb.d
         env:
         - name: MYSQL_ROOT_PASSWORD
           value: password  # Remplacez par le mot de passe souhaité
         - name: MYSQL_DATABASE
           value: test  # Nom de la base de données par défaut
-      initContainers:
-        - name: init-mysql
-          image: mysql:latest
-          command: ['sh', '-c', 'mysql -h localhost -u root -p password < /docker-entrypoint-initdb.d/init.sql']
-          volumeMounts:
-            - name: mysql-init
-              mountPath: /docker-entrypoint-initdb.d
-      volumes:
-        - name: mysql-init
-          configMap:
-            name: mysql-init-config
