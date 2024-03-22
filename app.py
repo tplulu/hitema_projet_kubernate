@@ -4,7 +4,7 @@ from flask_mysqldb import MySQL
 app = Flask(__name__)
 
 # Configuration de la base de données MySQL
-app.config['MYSQL_HOST'] = 'zen_shtern'  # Nom du conteneur MySQL
+app.config['MYSQL_HOST'] = 'mysql-db-service'  # Nom du conteneur MySQL
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = 'password'     # Mot de passe défini lors de la création du conteneur MySQL
 app.config['MYSQL_DB'] = 'test'      # Nom de la base de données
