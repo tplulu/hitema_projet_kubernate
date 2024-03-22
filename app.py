@@ -11,6 +11,18 @@ app.config['MYSQL_DB'] = 'test'      # Nom de la base de données
 
 mysql = MySQL(app)
 
+# Fonction pour exécuter les commandes SQL de création de la base de données et de la table
+def create_database_and_table():
+    cur = mysql.connection.cursor()
+    cur.execute("CREATE DATABASE IF NOT EXISTS test;")
+    cur.execute("USE test;")
+    cur.execute("CREATE TABLE IF NOT EXISTS user (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255) NOT NULL);")
+    mysql.connection.commit()
+    cur.close()
+
+# Exécution de la fonction lors du démarrage de l'application
+create_database_and_table()
+
 # Route POST pour ajouter un utilisateur
 @app.route("/add_user", methods=['POST'])
 def add_user():
