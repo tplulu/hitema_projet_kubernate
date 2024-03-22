@@ -18,7 +18,7 @@ def add_user():
     data = request.json  # Supposons que le nom de l'utilisateur soit envoyé en JSON
     name = data.get('name')
     if not name:
-        return jsonify({"error": "Le nom est requiis"}), 400
+        return jsonify({"error": "Le nom est requiiis"}), 400
 
     cur = mysql.connection.cursor()
     cur.execute("INSERT INTO user (name) VALUES (%s)", (name,))
