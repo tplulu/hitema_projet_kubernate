@@ -24,7 +24,8 @@ metadata:
   name: mysql-db-service  # Nom du service pour la base de données MySQL
 spec:
   selector:
-    app: zen_shtern # Correspond au label utilisé par le conteneur de la base de données MySQL
+    matchLabels:
+      app: zen_shtern
   ports:
     - protocol: TCP
       port: 3306  # Port utilisé par MySQL
