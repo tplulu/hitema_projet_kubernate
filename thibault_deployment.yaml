@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: mon-replicaset
+  name: thibault-mon-replicaset
 spec:
   replicas: 3
   selector:
